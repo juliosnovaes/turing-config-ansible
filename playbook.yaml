@@ -13,3 +13,7 @@
     - name: Set hostname
       hostname:
         name: "tpi-{{ inventory_hostname.split('-')[-1] }}"
+    - name: Atualizar todos os pacotes
+      apt:
+        upgrade: yes
+
