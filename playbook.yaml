@@ -1,0 +1,15 @@
+- name: Config
+  hosts: turingPi
+  become: true
+  tasks:
+    - name: create user
+      ansible.builtin.user:
+        name: julionovaes 
+        shell: /bin/bash
+        groups: adm,dialout,cdrom,floppy,sudo,audio,dip,video,plugdev,netdev,lxd
+        ssh_key_file: 
+        password: 
+        append: yes
+    - name: Set hostname
+      hostname:
+        name: "tpi-{{ inventory_hostname.split('-')[-1] }}"
